@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <div id="activelist">
+        <div id = "introduction">
+        {% if book.image_url %}
+            <img src="{{ book.image_url }}" class="list_img">
+        {% else %}
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/No_image_3x4.svg/1024px-No_image_3x4.svg.png" alt="No image Provided" class="list_img">
+        {% endif %}
+        <p class="text">{{ book.desc }}</p>
+        </div>
+        <div id="commentsection">
+            <h3>Comments</h3>
+            <div id="commentbox">
+                <ul>
+                   commentbox content
+                </ul>
+            </div>
+    
+            <form method = "get" >
+            </form>
+        </div>
+        <div>
+            <a class="text" href="{% url 'index' %}">返回</a>
+        </div>
+    </div>
+
+</body>
+</html>
+<style>  
+    #activelist{
+        margin-top: 0.5vw;
+        grid-gap: 2vw;
+        display:grid;
+        width: 87%;
+        margin-left: 10%;
+        grid-template-rows: repeat(auto,1fr);
+        grid-template-columns: 0.5fr 1fr 0.05fr;
+        font-family: 'Nunito', sans-serif;
+    }
+    .text{
+        font-size: 20px;
+        font-family:"楷体";
+    }
+    p{
+        margin-top: 1vw;
+    }
+    #commentsection{
+        
+        background-color: #F5F5F5;
+    
+    }
+    h3{
+        text-align: center;
+        font-family: "楷体";
+    }
+    #commentbox{
+    text-align: left;
+    padding-top: 1vw;
+    background-color: white;
+    min-height: 800px;
+    margin: 0.5vw;
+    
+    }
+    introduction{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    img{
+         width: 100%;
+          
+        }
+    
+    .title{
+    
+        font-size: 2vw;
+        font-weight: bold;
+    
+    }
+    .c_price{
+        
+        font-weight: bold;
+    
+    }
+    
+    .comment{
+       align-items : left;
+    }
+    
+    .start_bid{
+    
+        padding-bottom: 1vw;
+    
+    }
+    </style>

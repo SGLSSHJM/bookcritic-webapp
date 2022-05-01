@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+    <h2>图书列表</h2>
+    <div>
+        aaa
+    </div>
+    <div id="activelist">
+    {% for book in books %}
+    <div class = "card">
+        <a class="title">{{book.book_name}}</a>
+        <img src="{{ book.image_url }}" class="list_img">
+        <a class="title" href="{% url 'bookdetail' book.id %}">更多</a>
+    </div>  
+    {% endfor %}
+    </div>
+</body>
+</html>
+<style>
+    p{
+        padding: 1vw;
+    }
+    #activelist{
+        margin-top: 4vw;
+        grid-gap: 2vw;
+        display:grid;
+        width: 90%;
+        margin-left: 5%;
+        grid-template-rows: repeat(auto,1fr);
+        grid-template-columns: repeat(7,1fr);
+        font-family: 'Nunito', sans-serif;
+        text-align: center;
+    }
+    .card{
+        display: grid;  
+        grid-template-rows: repeat(auto,1fr);
+        grid-template-columns: 1fr;
+        width: 90%;
+        margin-left: 5%;
+    }
+        
+    img{
+            width: 100%;
+            length: 100%;
+        }
+        
+    .title{
+        font-family: "楷体";
+        font-size: 1vw;
+    }
+    .c_price{
+        font-weight: bold;
+    }
+        
+        
+ </style>
