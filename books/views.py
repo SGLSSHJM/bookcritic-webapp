@@ -30,11 +30,24 @@ def bookdetail(request, book_id):
 def addremark(request):
     remarktext = request.GET["remark_text"]
     score_number = request.GET["score"]
-    username = request.user.username
-    book_name = request.book.book_name
-    new_remark = Remark(user = username, book=book_name, score = score_number, remark_text = remarktext)
+    username = request.session['user_name']
+    book_name1 = request.GET["bookname"]
+    selectedbook = Book.objects.get(book_name = book_name1)
+    book_id = selectedbook.pk
+    new_remark = Remark(user = username, book=selectedbook, score = score_number, remark_text = remarktext)
     new_remark.save()
     return bookdetail(request, book_id)
+
+def create(request):
+    if request.method == "POST":
+        m = Book()
+        m.book_name = request.POST["create_name"]
+        m.author_name = request.POST["create_author"]
+        m.desc = request.POST["create_desc"]
+        m.image_url = request.POST["img_url"]
+        m.save()
+        return redirect("index")
+    return render(request, "books/create.html")
 
 def login(request):
     if request.session.get('is_login',None):
@@ -121,3 +134,4 @@ def hash_code(s, salt='mysite'):# 加点盐
     s += salt
     h.update(s.encode())  # update方法只接收bytes类型
     return h.hexdigest()
+

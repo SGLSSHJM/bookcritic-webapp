@@ -28,7 +28,7 @@
             <form  action ="{% url 'addremark' %}"  method="get">
                 <input required type = "text" placeholder = "Add Comment" name = "remark_text">
                 <input required type = "number" placeholder = "Add Score" name = "score">
-                <button class="btn btn-outline-primary" type = "submit" value = {{ book.id }} value = {{book.book_name}} name = "bookid"> Comment </button>
+                <button class="btn btn-outline-primary" type = "submit" value = {{ book.book_name }} name = "bookname"> Comment </button>
             </form>
         </div>
         <div>
