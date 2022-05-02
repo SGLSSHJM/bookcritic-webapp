@@ -6,13 +6,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>忙鱼</h1>
+        <h1>Bookcritic</h1>
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
-                aaa
+                <a class="nav-link" href="{% url 'index' %}">登录</a>
             </li>
             <li class="nav-item">
-                aaa
+                <a class="nav-link" href="{% url 'index' %}">注册</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'index' %}">加入图书</a>
             </li>
         </ul>
         {% block body %}

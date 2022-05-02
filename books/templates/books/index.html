@@ -1,3 +1,4 @@
+{% extends 'books/layout.html' %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +7,9 @@
 </head>
 <body>
     <h2>图书列表</h2>
-    <div>
-        aaa
-    </div>
+{% block body %}
+    <h1>{{ request.session.user_name }}!  欢迎回来！</h1>
+    <p><a href="logout">登出</a></p>
     <div id="activelist">
     {% for book in books %}
     <div class = "card">
@@ -18,8 +19,6 @@
     </div>  
     {% endfor %}
     </div>
-</body>
-</html>
 <style>
     p{
         padding: 1vw;
@@ -58,3 +57,4 @@
         
         
  </style>
+ {% endblock body %}

@@ -18,11 +18,17 @@
             <h3>Comments</h3>
             <div id="commentbox">
                 <ul>
-                   commentbox content
+                   精彩的短评：
                 </ul>
+                <ur>
+                    {% for remark in remarks %}
+                    <li><a class="comment"><a>用户“{{remark.user}}”的评论：{{remark.remark_text}}                 ({{remark.score}})</a></li>
+                    {% endfor %}
             </div>
-    
-            <form method = "get" >
+            <form  action ="{% url 'addremark' %}"  method="get">
+                <input required type = "text" placeholder = "Add Comment" name = "remark_text">
+                <input required type = "number" placeholder = "Add Score" name = "score">
+                <button class="btn btn-outline-primary" type = "submit" value = {{ book.id }} value = {{book.book_name}} name = "bookid"> Comment </button>
             </form>
         </div>
         <div>
@@ -60,6 +66,8 @@
         font-family: "楷体";
     }
     #commentbox{
+    font-family: "楷体";
+    font-size: 20px;
     text-align: left;
     padding-top: 1vw;
     background-color: white;
