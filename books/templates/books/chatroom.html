@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chatroom</title>
+</head>
+<div id="activelist">
+    <div id="commentsection">
+        <h3>聊天室</h3>
+        <div id="commentbox">
+            <ur>
+                {% for chat in chats %}
+                <li><a class="comment"><a>用户“{{chat.user}}”的评论：{{chat.chat_text}} ({{chat.pub_date}})</a></li>
+                {% endfor %}
+                <li class="comment2"><a class="comment"><a>{{result}}</a></li>
+        </div>
+        <form  action ="{% url 'addchat' %}"  method="get">
+            <input required type = "text" placeholder = "请输入评论" name = "chat_text">
+            <button class="btn btn-outline-primary" type = "submit"  name = "bookname"> 发布 </button>
+        </form>
+    </div>
+    <div>
+        <a class="text" href="{% url 'index' %}">返回</a>
+    </div>
+<style>  
+    #activelist{
+        margin-top: 0.5vw;
+        grid-gap: 2vw;
+        display:grid;
+        width: 100%;
+        grid-template-rows: repeat(auto,1fr);
+        grid-template-columns: 10fr 0.1fr;
+        font-family: 'Nunito', sans-serif;
+    }
+    .text{
+        font-size: 50px;
+        font-family:"楷体";
+    }
+    p{
+        margin-top: 1vw;
+    }
+    #commentsection{
+        
+        background-color: #F5F5F5;
+    
+    }
+    h3{
+        font-size : 30px;
+        text-align: center;
+        font-family: "楷体";
+    }
+    #commentbox{
+    font-family: "楷体";
+    font-size: 20px;
+    text-align: left;
+    padding-top: 1vw;
+    background-color: white;
+    min-height: 800px;
+    margin: 0.5vw;
+    
+    }
+    introduction{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+    img{
+         width: 100%;
+          
+        }
+    
+    .title{
+    
+        font-size: 2vw;
+        font-weight: bold;
+    
+    }
+    .c_price{
+        
+        font-weight: bold;
+    
+    }
+    
+    .comment{
+       align-items : left;
+    }
+    .comment2{
+        position : fixed;
+        bottom : 100px;
+        font-size : 50px;
+        font-family : "楷体";
+     }
+    .start_bid{
+    
+        padding-bottom: 1vw;
+    
+    }
+    </style>

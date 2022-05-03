@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>index</title>
+    <title>bookdetail</title>
 </head>
 <body>
     <div id="activelist">
@@ -22,8 +22,9 @@
                 </ul>
                 <ur>
                     {% for remark in remarks %}
-                    <li><a class="comment"><a>用户“{{remark.user}}”的评论：{{remark.remark_text}}                 ({{remark.score}})</a></li>
+                    <li><a class="comment"><a>用户“{{remark.user}}”的评论：{{remark.remark_text}}</a></li>
                     {% endfor %}
+                    <li class="comment2"><a class="comment"><a>{{result}}</a></li>
             </div>
             <form  action ="{% url 'addremark' %}"  method="get">
                 <input required type = "text" placeholder = "Add Comment" name = "remark_text">
@@ -101,7 +102,12 @@
     .comment{
        align-items : left;
     }
-    
+    .comment2{
+        position : fixed;
+        bottom : 100px;
+        font-size : 50px;
+        font-family : "楷体";
+     }
     .start_bid{
     
         padding-bottom: 1vw;

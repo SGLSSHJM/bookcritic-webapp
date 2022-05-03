@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Book,Remark,User
+from .models import *
 from . import models
 from . import forms
 from django.template import loader
 from django.shortcuts import redirect
 import hashlib
+from django.db.models import Avg
+from django.utils import timezone
 
 # Create your views here
 
@@ -24,8 +26,9 @@ def remark(request, remark_id):
 def bookdetail(request, book_id):
     book=Book.objects.get(pk=book_id)
     remark_list=book.remark_set.all()
+    result = book.remark_set.all().aggregate(评分=Avg("score"))
     return render(request, 'books/bookdetail.html', {
-        "book":book, "remarks": remark_list,
+        "book":book, "remarks": remark_list, "result" : result,
     })
 
 def addremark(request):
@@ -150,4 +153,15 @@ def theauthor(request):
     return render(request, "books/index.html",{
         "books" : author_books,"message" : message,
     })
+
+def chat(request):
+    chatlist = Chat.objects.all()
+    return render(request, "books/chatroom.html", {"chats" : chatlist})
+ 
+def addchat(request):
+    username = request.session['user_name']
+    chattext = request.GET["chat_text"]
+    new_chat = Chat(user = username, chat_text = chattext, pub_date=timezone.now())
+    new_chat.save()
+    return redirect("chat")
 

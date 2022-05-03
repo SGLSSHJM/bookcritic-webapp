@@ -1,7 +1,6 @@
 {% extends "books/layout.html" %}
 
 {% block body %}
-    <h2 style = "font-weight: bold;text-align: center; font-family: Nunito;">Create Listing</h2>
     <div id="activelist">
     <form method="POST">
         {% csrf_token %}
@@ -9,7 +8,7 @@
         <input required placeholder="作者" type="text" name="create_author"/>
         <textarea placeholder="简介" required type="text" name="create_desc"></textarea>
         <input placeholder="封面" type="text" name="img_url"/>
-        <button class="btn btn-outline-primary" type="submit">Submit</button>
+        <button class="btn btn-outline-primary" type="submit">提交</button>
     </form>    
     </div>
       

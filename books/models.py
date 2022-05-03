@@ -17,6 +17,10 @@ class Remark(models.Model):
     remark_text = models.CharField(max_length=500)
     def __str__(self):
         return self.remark_text
+class Chat(models.Model):
+    user = models.CharField(max_length=64, default="匿名")
+    chat_text = models.CharField(max_length=500)
+    pub_date = models.DateTimeField('date published')
 
 class User(models.Model):
 

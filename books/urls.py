@@ -17,4 +17,6 @@ urlpatterns = [
     path('author_list', views.author_list, name="author_list"),
     path('theauthor', views.theauthor, name="theauthor"),
     path('', views.home, name='home'),
+    path('chatroom', views.chat, name='chat'),
+    path('addchat', views.addchat, name='addchat'),
 ]
