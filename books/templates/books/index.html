@@ -8,6 +8,9 @@
 <body>
     <h2>图书列表</h2>
 {% block body %}
+    {% if message %}
+        <p class="author">以下是所有{{message}}的作品 ： </p>
+    {% endif %}
     <div id="activelist">
     {% for book in books %}
     <div class = "card">
@@ -51,6 +54,10 @@
     }
     .c_price{
         font-weight: bold;
+    }
+    .author{
+        font-size: 50px;
+        font-family: "楷体";
     }
         
         

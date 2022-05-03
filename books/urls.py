@@ -14,4 +14,7 @@ urlpatterns = [
     path('logout', views.logout, name="logout"),
     path('addremark', views.addremark, name="addremark"),
     path('create', views.create, name="create"),
+    path('author_list', views.author_list, name="author_list"),
+    path('theauthor', views.theauthor, name="theauthor"),
+    path('', views.home, name='home'),
 ]

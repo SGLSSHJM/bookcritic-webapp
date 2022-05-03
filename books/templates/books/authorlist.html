@@ -1,0 +1,56 @@
+{% extends "books/layout.html" %}
+
+{% block body %}
+    <h2>All Categories</h2>
+    <div id="activelist">
+    {% for author in author_list %}
+    <div class = "card">
+        <form  action ="{% url 'theauthor' %}"  method="get">
+            <button class="btn btn-outline-primary" type = "submit" value = {{ author.author_name }} name = "author_name"> {{author.author_name}} </button>
+        </form>   
+    </div>  
+    {% endfor %}
+    </div>
+      
+<style>
+        
+#activelist{
+
+    margin-top: 4vw;
+    grid-gap: 2vw;
+    display:grid;
+    width: 40%;
+    margin-left: 30%;
+    grid-template-rows: repeat(auto,1fr);
+    grid-template-columns: 1fr;
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+}
+.card{
+    display: grid;
+    grid-template-rows: repeat(auto,1fr);
+    grid-template-columns: 1fr;
+    width: 90%;
+    margin-left: 5%;
+    background-color: grey;
+}
+
+img{
+        width: 100%;
+    }
+
+.title{
+
+    font-size: 2vw;
+    color:black;
+}
+.listuser{
+    font-weight: bold;
+}
+button{
+    width: 100%;
+}
+</style>
+{% endblock %}
+
+

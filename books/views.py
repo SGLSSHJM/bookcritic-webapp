@@ -9,7 +9,8 @@ import hashlib
 
 # Create your views here
 
-
+def home(request):
+        return redirect("index")
 
 def index(request):
     if not request.session.get('is_login', None):
@@ -134,4 +135,19 @@ def hash_code(s, salt='mysite'):# 加点盐
     s += salt
     h.update(s.encode())  # update方法只接收bytes类型
     return h.hexdigest()
+
+def author_list(request):
+    author_list = Book.objects.values('author_name').distinct()
+    return render(request, "books/authorlist.html",{
+        "author_list" : author_list,
+    })
+
+
+def theauthor(request):
+    authorname=request.GET["author_name"]
+    author_books = Book.objects.filter(author_name = authorname)
+    message = authorname
+    return render(request, "books/index.html",{
+        "books" : author_books,"message" : message,
+    })
 
